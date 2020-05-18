@@ -77,12 +77,12 @@ instance Memoizable Word32 where
 instance Memoizable Word64 where
     memoize f = apply (fmap f identity)
 
-
 memoize2 :: (Memoizable a, Memoizable b) => (a -> b -> v) -> (a -> b -> v)
 memoize2 f = memoize (memoize . f)
 
+-- I don't know it doesn't work!
 memoizeSecond :: Memoizable b => (a -> b -> v) -> (a -> b -> v)
-memoizeSecond = (memoize .)
+memoizeSecond = (memoize .) 
 
 memoize3 :: (Memoizable a, Memoizable b, Memoizable c) => (a -> b -> c -> v) -> (a -> b -> c -> v)
 memoize3 f = memoize (memoize2 . f)
