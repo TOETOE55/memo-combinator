@@ -6,14 +6,12 @@ import Data.Word
 {-
   fibonacci sequence
 -}
-fix :: (a -> a) -> a
-fix f = let x = f x in x
 
 fib 0 = 0
 fib 1 = 1
 fib n = fib (n - 1) + fib (n - 2)
 
-fibMemo :: Word8 -> Integer
+fibMemo :: Integer -> Integer
 fibMemo = memoize fib where
     fib 0 = 0
     fib 1 = 1
@@ -24,7 +22,7 @@ fibMemo = memoize fib where
   knapsack
 -}
 
-type Weight = Word8
+type Weight = Int
 type Value = Double
 type Item = (Weight, Value)
 
